@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>The Mysterious Music Box</title>
+	</head>
+	<body>
+		<audio id="aBox1" preload="auto" loop>
+			<source src="Drips-ASSF_01.mp3">
+			The music box is broken...
+		</audio>
+		<audio id="aBox2" preload="auto" loop>
+			<source src="rocks_clay.mp3">
+			The music box is broken...
+		</audio>
+		<audio id="aBox3" preload="auto" loop>
+			<source src="scratchs_noisy.mp3">
+			The music box is broken...
+		</audio>
+		<audio id="aWinding" preload="auto" loop>
+			<source src="winding.mp3">
+			The music box is broken...
+		</audio>
+
+		<h1>
+			The Mysterious Music Box
+		</h1>
+		<p id="pExplain">
+			...Welcome to the mysterious music box, please turn on sound...
+		</p>
+		<img id="iBox" src="http://musicboxrestorations.com/wp-content/uploads/2013/08/small-cylinder-box-closed.png" alt="(...a music box...)" width="350">
+		
+		<p>
+			<button id="bWind" onmousedown="windingMouseDown()" onmouseup="windingMouseUp()">Wind-Up</button>
+			<button id="bReset" onclick="resetClick()" hidden>Rest Music Box</button>
+		</p>
+		<p>
+			Press and Hold the Wind-Up button to wind the music box
+		</p>
+		<p id = "pTimer"></p>
+		<script src="program.js"></script>
+	</body>
+</html

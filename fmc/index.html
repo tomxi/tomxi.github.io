@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>FMC</title>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	</head>
+	<body>
+		<h1 align="center">Test Your Hearing Threshold</h1>
+		<div id="initUI" style="display:block;">
+			<p>
+				You might have heard that the human hearing range is said to be bewteen 20 Hz and 20,000 Hz, but did you know that human ears don't respond equally to all frequencies within that range? We are most sensitive to mid-range frequencies and our ability to precieve lower and higher frequencies delinces. This website will test your hearing threshold at different frequencies, and plot them against the theoricial thresholds.
+			</p>
+			<p>
+				In order to achieve a relativly accurate measurement, you will have to use a decent pair of headphones, and conduct the test in a quiet environment. While it's OK to use most any headphones, it is best to use high quality monitoring headphones. Many general listening headphone "color" the sounds by applying an EQ to the signal, and the coloration would be included in the test result, which may or may not be what you want.
+			</p>
+			<p>
+				Before starting the test, please plug-in your headphones and adjust the overall volume using the test tone. To do so, click on the Play test tone button below, and adjust to a comfortable volume. Click Stop test tone to stop. It is important that during the test, the overall volume is not adjusted.
+			</p>
+			<button onclick="testTone.play()">Play test tone</button>
+			<button onclick="testTone.stop()">stop test tone</button>
+			<p>
+				The test will examine your hearing threshold from 80 Hz to 16,000 Hz. The number of frequencies you would like the test to examine can be changed by sliding the slider below. For any meaningful result, please set the "number of frequencies to test" to at least 6. A test consisting more frequencies will require more time to finish, but will provide better frequency resolution of your threshold. With the default number of 12, the test will take about 5 minuets to finish.
+			</p>
+			<p>
+				When you are ready, start the test by pressing start test.
+			</p>
+			<div align="center">
+				Number of frequencies to test:
+				<span id="testLen" style="font-weight:bold;color:DarkSlateBlue;">12</span><br/>
+				3 <input type="range" min="3" max="20" step="1" value="12" onchange="helpers.testLen(this.value);"> 20
+				<p><button onclick="test.start();">start test</button></p>
+			</div>
+		</div>
+
+		<div id="testUI" style="display:none;" align="center">
+			<p> Current test tone frequency: <span id="freq" style="font-weight:bold;"></span></p>
+			<p> Current test tone amplitude: <span id="g" style="font-weight:bold;"></span></p>
+
+			<div id="prompt" align="center">
+				Did you hear it?<br/>
+				<button onclick="test.yihi();">Yes, I heard it.</button>
+				<button onclick="test.nidhi();">No, I didn't hear it.</button>
+			</div>
+			<div id="graph" style="width:600px;height:300px;"></div>
+		</div>
+
+		<div id="resultUI" style="display:none;" align="center">
+			<p> Here's your hearing thresholds at differnt frequencies: </p>
+			<div id="endGraph" style="width:800px;height:300px;"></div>
+			<div id="diffGraph" style="width:600px;height:300px;"></div>
+			<button onclick="history.go(0);">Start a new test</button>
+		</div>
+
+		<script src="program.js"></script>
+		<script>
+			var test = new TestCurve(12);
+			var testTone = new Whistle();
+		</script>
+		<script></script>
+	</body>
+</html>

@@ -98,21 +98,3 @@ function interfaceToWindingState() {
 	document.getElementById("pTimer").innerHTML = "";
 	document.getElementById("iBox").src = "http://musicboxrestorations.com/wp-content/uploads/2013/08/small-cylinder-box-closed.png";
 }
-
-
-
-
-var for_fun = {
-	var a = function () {
-	    var amplitude = 0.25;
-	    var decay = Math.exp(- 1.0 / (2.0 * AC.sampleRate));
-	    return function (event) {
-	        var i, N, inp, out;
-	        inp = event.inputBuffer.getChannelData(0);
-	        out = event.outputBuffer.getChannelData(0);
-	        for (i = 0, N = out.length; i < N; ++i, amplitude *= decay) {
-	            out[i] = amplitude * inp[i];
-	        }
-	    };
-	};
-}
